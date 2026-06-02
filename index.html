@@ -36,6 +36,23 @@
     />
     <meta name="twitter:image" content="https://dev-faizankhan.github.io/og.png" />
 
+    <!-- GitHub Pages SPA fallback: decode the /?/path redirect from 404.html
+         back into a clean URL before the router mounts (rafgraph/spa-github-pages). -->
+    <script>
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&');
+            })
+            .join('?');
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+
     <!-- Prevent theme flash: set class before paint -->
     <script>
       (function () {
@@ -57,8 +74,50 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/assets/index-BXC0ThwW.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-_bIQyny7.css">
+
+    <!-- Structured data: helps Google associate this site with the person -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Faizan Khan",
+        "url": "https://dev-faizankhan.github.io/",
+        "jobTitle": "Full-Stack Developer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Karachi",
+          "addressCountry": "PK"
+        },
+        "sameAs": [
+          "https://github.com/dev-faizankhan",
+          "https://linkedin.com/in/dev-faizan",
+          "https://www.upwork.com/freelancers/~0101147b87f6f71286"
+        ],
+        "knowsAbout": [
+          "React",
+          "Next.js",
+          "Node.js",
+          "Python",
+          "FastAPI",
+          "React Native",
+          "PostgreSQL",
+          "AWS",
+          "DICOM",
+          "Healthcare software"
+        ]
+      }
+    </script>
+
+    <!-- Umami analytics (privacy-friendly). Auto-track off: route changes are
+         tracked manually so routes are recorded with clean URLs. -->
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="753a78c9-e961-4ebf-8c26-ec48cbd5081f"
+      data-auto-track="false"
+    ></script>
+    <script type="module" crossorigin src="/assets/index-BZ5yvEMn.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-jeW0tToS.css">
   </head>
   <body>
     <div id="root"></div>
